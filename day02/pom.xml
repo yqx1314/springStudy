@@ -5,22 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.huawei</groupId>
-    <artifactId>day01</artifactId>
+    <artifactId>day02</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>springIOC</module>
-        <module>springDI</module>
-        <module>springFactory</module>
+        <module>account_xmlioc</module>
+        <module>account_annoioc</module>
+        <module>account_annoioc_withoutxml</module>
     </modules>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.0.2.RELEASE</version>
-        </dependency>
-    </dependencies>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
