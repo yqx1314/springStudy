@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="accountService" class="com.huawei.service.impl.AccountServiceImpl">
+<!--        index:指定参数在构造函数参数列表的索引位置
+            type:指定参数在构造函数中的数据类型
+            name:指定参数在构造函数中的名称
+            ========以上三个参数都是找给谁赋值，下面两个值得是赋什么值==============
+            value:它能赋的值是基本数据类型和String类型
+            ref:他能赋值是其他bean类型
+-->
+        <constructor-arg name="name" value="张三"/>
+        <constructor-arg name="age" value="18"/>
+        <constructor-arg name="birthday" ref="now"/>
+    </bean>
+
+    <bean id="accountService2" class="com.huawei.service.impl.AccountServiceImpl2">
+<!--        name:找到的类中set方法后面的部分
+            ref：给属性赋值是其他bean类型
+            value：给属性赋值是基本数据类型和String类型
+            实际开发中，这种方式用的较多
+-->
+        <property name="name" value="张三"></property>
+        <property name="age" value="18"></property>
+        <property name="birthday" ref="now"></property>
+    </bean>
+
+    <bean id="accountService3" class="com.huawei.service.impl.AccountServiceImpl3"
+        p:name="test" p:age="21" p:birthday-ref="now"
+    >
+    </bean>
+
+    <bean id="now" class="java.util.Date"></bean>
+
+    <bean id="accountService4" class="com.huawei.service.impl.AccountServiceImpl4">
+<!--        在注入集合数组时，只要结构相同，标签可以互换-->
+<!--        给数组注入数据-->
+        <property name="myStrs">
+            <set>
+                <value>AAA</value>
+                <value>BBB</value>
+                <value>CCC</value>
+            </set>
+        </property>
+<!--        给list集合注入数据-->
+        <property name="myList">
+            <array>
+                <value>AAA</value>
+                <value>BBB</value>
+                <value>CCC</value>
+            </array>
+        </property>
+<!--        给set集合注入数据-->
+        <property name="mySet">
+            <list>
+                <value>AAA</value>
+                <value>BBB</value>
+                <value>CCC</value>
+            </list>
+        </property>
+<!--        给map集合注入数据-->
+        <property name="myMap">
+            <map>
+                <entry key="testA">
+                    <value>aaa</value>
+                </entry>
+                <entry key="testB" value="bbb"></entry>
+            </map>
+        </property>
+<!--        给prop结合注入数据-->
+        <property name="myProps">
+            <props>
+                <prop key="testA">aaa</prop>
+                <prop key="testB">bbb</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
